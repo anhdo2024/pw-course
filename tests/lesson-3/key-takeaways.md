@@ -14,6 +14,7 @@
 ## Đưa từ vùng repository về working directory (uncommit)
 **git reset HEAD~1 (undo 1 commit)**
 
+---
 # Branching model
 ## Tạo branch ##
 
