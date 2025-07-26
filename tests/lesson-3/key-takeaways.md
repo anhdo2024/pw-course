@@ -49,7 +49,9 @@ không cần git theo dõi.
 
 **PascalCase: tên class**
 
+---
 # Formatted console.log
+```
 console.log(‘Toi la Nga’);
 
 console.log(“Toi la Phong”);
@@ -61,6 +63,7 @@ let name = “Nga”;
 console.log(`Toi la ${name}`);
 
 console.log(“Toi ten la” + name+ “”)
+```
 
 # Object
 
