@@ -300,3 +300,17 @@ console.log(numbers);
 numbers.sort((a, b) => b - a);
 console.log(numbers);
 ```
+- pop(): `Tien ích Xóa và trả về phần tử cuối cùng của mảng, làm thay đổi mảng gốc let arr = [1, 2, 3];`
+```
+Ví dụ:
+let last = arr.pop(); // arr = [1, 2], last = 3 
+console.log(arr); // [1, 2] 
+console.log(last); // 3 
+```
+
+- unshift() (): `Tien ích Thêm một hoặc nhiều phần tử vào đầu mảng, trả về độ dài mới của mảng, làm thay đổi mảng gốc`
+```
+Ví dụ:let arr = [1, 2, 3]; 
+arr.unshift(0); // arr = [0, 1, 2, 3] 
+console.log(arr); // [0, 1, 2, 3]] 
+```
