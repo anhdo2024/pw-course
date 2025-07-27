@@ -14,6 +14,7 @@
 ## Đưa từ vùng repository về working directory (uncommit)
 `**git reset HEAD~1 (undo 1 commit)**`
 
+---
 # Branching model
 ## Tạo branch ##
 
@@ -48,6 +49,7 @@ không cần git theo dõi.
 
 **PascalCase: tên class**
 
+---
 # Formatted console.log
 ```
 console.log(‘Toi la Nga’);
@@ -61,9 +63,6 @@ let name = “Nga”;
 console.log(`Toi la ${name}`);
 
 console.log(“Toi ten la” + name+ “”)
-```
----
----
 
 # Object
 
