@@ -222,7 +222,7 @@ console.log(str.indexOf("World!")); // 6
 console.log(str.indexOf("K16!")); // -1
 ```
 
-## Arary util function
+## Array util function
 
 - map: `Tien ích điều chỉnh mảng theo điều kiện nào đó`
 ```
@@ -308,7 +308,7 @@ console.log(arr); // [1, 2]
 console.log(last); // 3 
 ```
 
-- unshift() (): `Tien ích Thêm một hoặc nhiều phần tử vào đầu mảng, trả về độ dài mới của mảng, làm thay đổi mảng gốc`
+- unshift(): `Tien ích Thêm một hoặc nhiều phần tử vào đầu mảng, trả về độ dài mới của mảng, làm thay đổi mảng gốc`
 ```
 Ví dụ:let arr = [1, 2, 3]; 
 arr.unshift(0); // arr = [0, 1, 2, 3] 
