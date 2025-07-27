@@ -1,165 +1,211 @@
+# VERSION CONTROL SYSTEM
+VCS: Hệ thống quản lý các phiên bản
+- Local: lưu ở máy cá nhân
+- Centralize: lưu ở một máy chủ tập trung
+- Distributed: lưu ở nhiều máy khác nhau
 
+---
+# GIT
+## Git & GitHub
+| Git | GitHub |
+|----------|----------|
+| Là một phần mềm    | Là một dịch vụ web  | 
+| Cài trên máy của bạn    | Host trên website  | 
+| Là một commandline tool    | Là công cụ có giao diện  | 
+| Là công cụ quản lý phiên bản, đưa file vào Git repository    | Là nơi để upload Git repository lên  | 
+| Có các tính năng của VCS    | Có các tính năng của VCS và một số tính năng khác  | 
 
-[Bài Học Số 2](https://classroom.google.com/w/NzgzMTM1OTc2MTEw/t/all)
-
-# Version Control System
-
-VCS **(Version Control System)**: Hệ thống quản lý các phiên bản ○ Google Docs sử dụng Version Control System để dễ quản lý các phiên bản.
-
-● **Local**: lưu ở máy cá nhân
-
-● **Centralize**: lưu ở một máy chủ tập trung.
-
-● **Distributed**: lưu ở nhiều máy khác nhau
-
-# Git
-*Git? Tại sao dùng Git* 
-
-○ **Gi**t được viết bởi Linus Torvalds, cha đẻ của Linux
-
-○ git là từ **viết sai chính tả** (có chủ đích) của get, do get đã đượcdùng rồi
-
-○ Dùng git do **nhu cầu quản lý phiên bản và làm việc giữa nhiều người với nhau**
-
+---
 ## Git - three states
-**Working Directory**: *Các file mới hoặc file có thay đổi*
+- **Working Directory**: The current state of your files on your local machine (e.g. edit a file called example.txt, but it hasn't been added to the staging area)
+- **Staging Area**: A temporary storage area where changes are prepared to be committed
+- **Repository**: All commits or changes are safe and part of your version history
 
-**Staging Area**: *Các file đưa vào vùng chuẩn bị commit (tạo ra các phiên bản)*
+*Summary of Workflow*
+- Modify files in the **Working Directory**
+- Use `git add` to stage changes into the **Staging Area**
+- Use `git commit` to save staged changes to the **Git Repository**
 
-**Repository**: *Các commit (phiên bản)*
+---
+## Common commands
+| Description | Command | Note |
+|----------|----------|----------|
+| Initialize an empty Git repository in project directory (local repo)    | `git init` |         |
+| Config for a specific repo    | `git config user.name "yourname"`  |         | 
+| Config for all repos    | `git config --global user.name "yourname"`  |          |
+| Add a file to staging   | `git add <path_to_file>`  |          |
+| Add all files to staging   | `git add .` |         |
+| Check file status   | `git status` | Files in **green**: located on **Staging Area**, Files in **red**: located on **Working Directory**        |
+| Commit the changes with a message   | `git commit -m "message"` |         |
+| Check commit history   | `git log` |         |
 
-**Git init --> Working Directory**
+---
+## Commit convention
+```
+<type>: <short_description>
+```
 
-**Git add test1.spec.ts --> đua file vô vùng Staging Area**
+**type**: types of commit:
+- chore: minor edits, spelling corrections, deleting unused files,...
+- feat: add new feature, new test case
+- fix: fix a bug in a previous test
 
-**Git commit -m"feat: add test 1" --> đua file vô vùng Repository**
+**short description**: short description (50 characters), in English or Vietnamese
 
-## Git - key takeaways
+---
+# JAVASCRIPT BASIC
+**To run a JS file**
+```
+node <path_to_file>
+```
 
-**Khởi tạo thư mục được quản lý bởi Git** --> *git init*
+---
+## Hello World
+```
+console.log("<message>");
 
-**Câu lệnh thường dùng Cấu hình:**
+console.log(<variable_name>);
 
-*Cho 1 repo*
+// ex: 
+console.log("My name is: " + firstName);
 
-○ git config user.name “<name>”
+console.log("My name is: ", firstName);
+```
 
-○ git config user.email “<email>”
+---
+## Variable
+```
+var firstName = "Playwright";
+let lastName = "Automation class";
+```
 
-● *Cho toàn bộ máy tính (default)*
+- `var` khai báo lại được, `let` thì không
+```
+// ex:
+var firstName = "Bella";
+var firstName = "Trang"; // OK
 
+let firstName = "Bella";
+let firstName = "Trang"; // error
+```
 
-○ git config --global user.name
-“user”
+- `var`: global scoped & `let`: block scoped {...}
+- `const` để khai báo các giá trị không thể thay đổi, dùng khi biến không gán lại được
+```
+// ex:
+const name = "Bella";
+console.log (name);
+name = "Trang"; // error
+```
 
-○ git config --global user.email
-“email”
+---
+## Data types
+| Type | Value |
+|----------|----------|
+|  String   | `"Bella"`, `"Playwright"`    |
+|  Number   |   `100`, `0`, `10.5`, `-10.5`  |
+|  Boolean   |   `true`, `false`  |
+|   Bigint  |     |
+|   Undefined  |     |
+|   Null  |     |
+|   Symbol  |     |
+|   Object  |     |
 
-**Thêm file vào vùng staging**
+```
+// ex:
+const name = "Bella";
+const isLearningPlaywright = true;
+const price = 200;
+```
 
-○ Thêm 1 file:  *git add <file_name>* 
+---
+## Comparison operator
+- So sánh hơn kém: `>`, `<`
+- So sánh bằng: `==`, `===`, `!=`, `!==`, `>=`, `<=`
 
-○ Thêm toàn bộ:  *git add .* 
+```
+// ex:
+const a = 10;
+const b = "10";
+const c = 11;
 
+console.log (a === b); // false - so sánh value & data type
+console.log (a == b); // true - so sánh value only
+console.log (a == c); // false
+```
 
-**Xem trạng thái file:** *git status*
+---
+## Unary operator
+- `i++` = `i+1`
+- `i--` = `i-1`
 
-○ File màu xanh: vùng staging
+```
+// ex:
+let i = 10
+i = i + 1 // i = 11
+console.log(i++) // i = 12
+```
 
-○ File màu đỏ: vùng working directory
+---
+## Arithmetic operator
+- Tính toán giá trị biểu thức
+- Các phép tính: `+`, `-`, `*`, `/`
+- **Ứng dụng:** `%` để trả về phần dư của phép tính
+```
+// ex:
+3%3 = 0 // 3 chia hết cho 3 dư 0
+3%2 = 1 // 3 không chia hết cho 2, dư 1
+3%1 = 0 // 3 chia hết cho 1 dư 0
+1%2 = 1 // 1 không chia hết cho 2, dư 1
+100%80 = 20 // 100 không chia hết cho 80, dư 20
+```
 
-**Câu lệnh thường dùng Commit** 
+- **Ứng dụng:** tìm số chẵn - lẻ
+```
+// ex:
+if (x % 2 === 1) {
+    console.log("x là số lẻ")
+};
 
-Commit: *git commit-m”message”*
+if (x % 2 === 0) {
+    console.log("x là số chẵn")
+};
+```
 
-Kiểm tra lịch sử commit: *git log*
+- Nối chuỗi với toán tử `+`
+```
+// ex:
+const str1 = "Hello";
+const str2 = "Playwright Viet Nam";
 
-## Git - commit convention
-**Commit message cần rõ ràng, chuyên nghiệp**
+console.log(str1 + str2); // HelloPlaywright Viet Nam
+```
 
-● Trong lớp học, dùng convention sau: <type>: <short_description>
+---
+## Conditional
+- Structure: `if (<điều kiện>) { // code }`
 
-● Trong đó:
+```
+// ex:
+const tuoiBa = 40;
+const tuoiMe = 38;
 
-○ **type**: loại commit
-
-■ **chore**: sửa nhỏ lẻ, chính tả, xóa
-file không dùng tới,...
-
-■ **feat**: thêm tính năng mới, test
-case mới
-
-■ **fix**: sửa lỗi 1 test trước đó
-
-○ short_description: mô tả ngắn gọn
-(50 kí tự), tiếng Anh hoặc tiếng Việt
-không dấu.
-
-# Javascript basic
-## Javascript
-Javascript Là một ngôn ngữ lập trình.
-
-Giúp cho browser hoạt động được.
-
-Bình thường Javascript chạy được do browser engine support
-
-○ **Edge**: Chaka
-
-○ **Firefox**: SpiderMonkey
-
-○ **Chrome**: V8
-
-● Để chạy được trên máy tính không cần trình duyệt, cần Node Js
-
-## Khai báo biến
-Variable = biến, dùng để lưu trữ giá trị, có thể thay đổi giá trị được.
-
-● Khai báo:
-
-○ *var <ten_bien> = <gia tri>;*
-
-○ let <ten_bien> = <gia tri>;*
-
-**Note**: 
-Phạm vi của biến
-
-
-○ var: phạm vi toàn cục (global)
-
-○ let: phạm vi trong cặp ngoặc {}
-
-● **Nên dùng: let, vì dễ kiểm soát phạm vi của biến**
-
-## Khai báo hằng số
-**Constant = hằng số**. Dùng để khai báo các giá trị không thể thay đổi.
-
-● Khai báo
-
-○ const <name> = <value>
-
-Khi nào dùng var/let, khi nào dùng const?
-
-● **var/let: khi biến sẽ gán lại**
-
-● **const: khi biến không gán lại**
-
-● *Thường sẽ dùng let và const*, **KHÔNG dùng var**
-
-### Khai báo vòng lặp
-**Loops = vòng lặp**
-- *Dùng để thực hiện một đoạn logic một số lần nhất định*
-
-- Cú pháp: for(<khởi tạo>; <điều kiện dừng>; <điều kiện tăng>) 
-
-{
-
-// code 
-
+if (tuoiBa > tuoiMe) {
+    console.log ("Ba lớn hơn Mẹ")
 }
+// result: Ba lớn hơn Mẹ
+```
 
-- Ví dụ: for (let i = 1; i <= 10; i++)
- {
+---
+## Loops
+- Structure: `for (<khởi tạo>; <điều kiện dừng>; <điều kiện tăng>) { // code }`
 
- console.log("Giá trị của i là: ", i);
- 
- }
+```
+// ex:
+for (let i = 1; i <= 10; i++) {
+    console.log ("Gía trị của i là: ", i);
+}
+```
+
+# VISUAL STUDIO CODE
+- Format code: `Option + Shift + F`
