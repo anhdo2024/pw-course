@@ -6,13 +6,13 @@
 - Gõ esc để thoát insert
 - Gõ “:wq” -> write and quit
 
-*git commit --amend -m”message”*
+`*git commit --amend -m”message”*`
 
 ## Đưa từ vùng staging về working directory
-**git restore --staged <file>**
+`**git restore --staged <file>**`
 
 ## Đưa từ vùng repository về working directory (uncommit)
-**git reset HEAD~1 (undo 1 commit)**
+`**git reset HEAD~1 (undo 1 commit)**`
 
 # Branching model
 ## Tạo branch ##
@@ -49,6 +49,7 @@ không cần git theo dõi.
 **PascalCase: tên class**
 
 # Formatted console.log
+```
 console.log(‘Toi la Nga’);
 
 console.log(“Toi la Phong”);
@@ -60,6 +61,9 @@ let name = “Nga”;
 console.log(`Toi la ${name}`);
 
 console.log(“Toi ten la” + name+ “”)
+```
+---
+---
 
 # Object
 
