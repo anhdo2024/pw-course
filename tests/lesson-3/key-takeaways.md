@@ -1,135 +1,272 @@
-[Bài Học Số 3](https://classroom.google.com/w/NzgzMTM1OTc2MTEw/t/all)
-
-# Thay đổi commit message. 
-**git commit --amend**
-- Gõ i -> vào chế độ insert
-- Gõ esc để thoát insert
-- Gõ “:wq” -> write and quit
-
-*git commit --amend -m”message”*
-
-## Đưa từ vùng staging về working directory
-**git restore --staged <file>**
-
-## Đưa từ vùng repository về working directory (uncommit)
-**git reset HEAD~1 (undo 1 commit)**
-
----
-# Branching model
-## Tạo branch ##
-
-*git branch <ten_branch>*
-
-*git checkout <ten_branch>*
-
-*git checkout -b <ten_branch>*
-
-**Tips:
-Luôn tạo branch mới trước khi thực hiện một lệnh copy từ internet**
-
-# .gitignore file
-
-**.gitignore = GitIgnore = Bỏ qua**
-
-Dùng để bỏ qua các file
-
-không cần git theo dõi.
-
-**Ignore file** <file_name>
-
-**Ignore folder**  folder-name
-
-# Conventions
-
-**snake_case: chưa dùng**
-
-**kebab-case: tên file**
-
-**camelCase: tên biến**
-
-**PascalCase: tên class**
-
----
-# Formatted console.log
+# GIT 
+## Undo actions
+- `git commit --amend`: edit the most recent commit and its message with text editor
+- `git commit --amend -m "message"`: edit the commit message without needing an editor, the new message `"message"` replaces the previous commit message immediately
+- `git restore --staged <file>` : unstage a file from Staging Area to Working Directory
+- `git reset HEAD~1` : undo the last commit from Local Repository to Working Directory
 ```
-console.log(‘Toi la Nga’);
+// ex:
+C1: git commit -m "add file1, file2"
 
-console.log(“Toi la Phong”);
+C2: git commit -m "add file3"
 
-console.log(`${variable_name}`)
+C3: git commit -m "add file4"
+--
 
-let name = “Nga”;
+git reset HEAD~1   // undo C3
 
-console.log(`Toi la ${name}`);
+git add file4   // add file4 to Staging Area
 
-console.log(“Toi ten la” + name+ “”)
+git restore --staged file4   // remove file4 from Staging Area, move it back to an "unstaged" state
 ```
 
-# Object
+---
+## Branching model
+- `git branch <branch_name>` : create a new branch with name <branch_name> & **NOT** switch to it (still remain on current branch)
+- `git checkout <branch_name>` : switch to an existing branch <branch_name>
+- `git checkout -b <branch_name>` : create a new branch with name <branch_name> & switch to it in one command
 
-*Object = đối tượng, dùng để lưu trữ tập hợp các giá trị vào cùng một biến hoặc hằng số*
+```
+Tips: Always create a new branch before executing a command copied from the internet
+```
 
-● Khai báo:
+---
+## Checkout to a revision
+- `git checkout <revision>` - to revert to a specific revision
+```
+// ex:
+commit a4edc4d5c2c17e1bb47c8d3b10efb74721412d4b (HEAD -> main, origin/main)
+Author: PW-Bella <bellantn93@gmail.com>
+Date:   Sun Jul 20 13:59:44 2025 +0700
 
+    feat: add js exercises of lesson-2
+
+--
+git checkout a4edc4d5c2c17e1bb47c8d3b10efb74721412d4b
+```
+
+---
+## GitIgnore
+- `.gitignore` = GitIgnore : include files or directories that Git should ignore
+```
+// ex: 
+.gitignore file:
+
+password.txt   // file name
+security/     // folder name
+```
+
+---
+# JAVASCRIPT BASIC
+## Conventions
+| Conventions | Usage |
+|----------|----------|
+| snake_case    |   | 
+| kebab-case    |  file name | 
+| camelCase    |  variable name  | 
+| PascalCase    | class name  | 
+
+---
+## Format of console.log
+- `console.log` with `'` and `"`
+```
+console.log('Toi la Bella');
+console.log("Toi la Trang");
+```
+
+```
+let name = Bella;
+
+console.log(`Toi ten la ${name}`);        // Toi ten la Bella
+console.log("Toi ten la " + name + "");   // Toi ten la Bella
+```
+
+---
+## Object
+- **Structure** 
+```
 let/const <ten_object> = {
-<thuoc_tinh>: <gia_tri>,
-...
+    <thuoc_tinh>: <gia_tri>,
+}
+```
+- **Example**
+```
+let user = {"name": Bella, "age": 31, "email": "bellantn93@gmail.com"};
+
+console.log("name = " + user.name);      // name = Bella
+```
+```
+const product = {
+    "name": "laptop",
+    "price": 500,
+    "isWindow": false,
+    "manufacturer": {
+        "name": "Apple",
+        "year": 2024
+    }
 }
 
-Trong đó:
-- <thuoc_tinh>: giống quy tắc đặt tên biến
-- <gia tri>: có kiểu giống biến, hoặc là 1 object khác.
+console.log("manufacturer name = " + product.manufacturer.name);      // manufacturer name = Apple
 
-VD:
+console.log("price = " + product["price"]);        // price = 500
 
-○ let user = {“name”: “Alex”, “age”: 10, “email”: “alex@gmail.com”}
+console.log("manufacturer year = " + product["manufacturer"]["year"]);      // manufacturer year = 2024
+```
 
-○ const product = {
-
-“name”: “Laptop”,
-
-“price”: 500,
-
-“isWindow”: true,
-
-“manufacturer”: {
-
-
-“name”: “Acer”,
-
-“year”: 2024
-
+- **Modify existing properties** - *Note: Even with `const`, you can modify the contents of the object because `const` only ensures the variable binding cannot change*
+```
+const student = {
+    name: "Bella",
+    age: 32,
 }
 
-# Array: Mảng
+student.age = 21;    // OK
+student = {"name": "Alex", "age": 21};    // error
+```
 
-● Tạo mảng
+- **Add object's attributes**
+```
+let bike = {
+    make: 'Yamaha',
+    model: 'YZF-R3'
+};
 
-○ Khai báo
+bike.color = "Blue";
+bike["price new"] = 100;
 
-○ Sử dụng
+console.log(bike);
 
-● Truy xuất mảng
+--Output:
+{make: 'Yamaha', model: 'YZF-R3', color: 'Blue', ‘price new’ : 100}
+```
 
-○ Độ dài mảng: length
+- **Delete object's attributes**
+```
+let employee = {
+    name: 'Le Van C',
+    age: 30,
+    department: 'HR'
+};
 
-○ Lấy phần tử theo index:
-[0], [1], [2]
+delete employee.age;
+console.log(employee);
 
+--Output:
+{name: 'Le Van C', department: 'HR'}
+```
 
-# Function là gì?
+---
+## Logical operation
+- `&&` - cả 2 vế của mệnh đề `đều` đúng
+- `||` - `một trong` 2 vế đúng
+- `!` - đảo `ngược` lại giá trị của mệnh đề
 
-**Function = hàm, là đoạn code được đặt tên và có thể tái sử dụng, thực hiện
-1 nhiệm vụ hoặc 1 tính toán cụ thể.**
+```
+const a = true;
+const b = false;
 
-● Khai báo
+let c = a && b;
+let d = a || b;
 
-function **nameFunction** () {
+console.log(c); // false
+console.log(d); // true
 
-// code
+let e = !c;
 
+console.log(e); // true
+```
+
+---
+## Array
+- **Create an array**
+```
+const favoriteColors = ["Orange", "Blue", "Black", "White", false, 200];
+```
+- **Access the array using index**
+```
+console.log(favoriteColors[0]);    // Orange
+```
+- **Return the number of elements using `length`**
+```
+console.log(favoriteColors.length);     // 6
+```
+- **Integrate with `for`**
+```
+for (let i = 0; i < favoriteColors.length; i++) {
+    console.log (favoriteColors[i]);
 }
 
-● Parameter
+--Output: 
+Orange
+Blue
+Black
+White
+false
+200
+```
 
-● Return value
+- **Retrieve the index of an element: `indexOf`**
+```
+console.log(favoriteColors.indexOf("Black")); // 2
+console.log(favoriteColors.indexOf("Red")); // -1
+```
+
+- **Add elements to the array: `push`**
+```
+const arr = [1, 2];
+arr.push(3);
+
+console.log(arr);
+
+--Output:
+[1, 2, 3]
+```
+
+---
+## Function
+- **Structure**
+```
+function <nameFunction>() {
+    // code
+}
+```
+
+- **Function không có parameter, không có return**
+```
+function sayHello() {
+  console.log("Hello, world!");
+}
+
+sayHello(); // Gọi hàm, in ra "Hello, world!"
+```
+
+- **Function không có parameter, có return**
+```
+function getGreeting() {
+  return "Hello, world!";
+}
+
+const greeting = getGreeting(); // Gọi hàm và dùng biến để hứng giá trị trả về
+
+console.log(greeting); // In ra: "Hello, world!"
+```
+
+- **Function có parameter, không có return**
+```
+function greet(name) {
+  console.log(`Hello, ${name}!`);
+}
+
+greet("Bella); // Gọi hàm và truyền tham số vào, in ra: "Hello, Bella!"
+```
+
+- **Function có parameter, có return**
+```
+function addNumbers(a, b) {
+  return a + b;
+}
+
+const sum = addNumbers(5, 10); // Gọi hàm và lưu giá trị trả về
+
+console.log(sum); // In ra: 15
+```
