@@ -1,7 +1,5 @@
 import { test } from '@playwright/test';
 
-let strTst = "Todo";
-let locatorButtonDelete = "//button[@id='todo-"
 
 test('Exercise 3: Todo page', async ({ page }) => {
     await test.step('Naivigate to Material Playwright Page', async () => {
